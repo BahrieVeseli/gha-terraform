@@ -7,7 +7,7 @@ resource "aws_instance" "webapp" {
   instance_type = "t3.micro"
 
   tags = {
-    Name = "bahrie-webapp"
+    Name  = "bahrie-webapp"
     Owner = "Bahrie"
   }
 }
