@@ -1,4 +1,4 @@
-name: Terraform CI
+name: Terraform CI/CD
 
 on:
   push:
@@ -33,3 +33,22 @@ jobs:
 
       - name: Terraform Plan
         run: terraform plan
+
+  deploy:
+    name: Apply (Deploy)
+    needs: terraform
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
