@@ -8,5 +8,6 @@ resource "aws_instance" "webapp" {
 
   tags = {
     Name = "bahrie-webapp"
+    Owner = "Bahrie"
   }
 }
