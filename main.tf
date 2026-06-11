@@ -1,3 +1,11 @@
+terraform {
+  backend "s3" {
+    bucket = "bahrie-terraform-state-2026"
+    key    = "gha-terraform/terraform.tfstate"
+    region = "eu-central-1"
+  }
+}
+
 provider "aws" {
   region = "eu-central-1"
 }
